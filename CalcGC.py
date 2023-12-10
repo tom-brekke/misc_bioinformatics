@@ -55,7 +55,15 @@ def calc_GC(str, Ns):
 		return(perGC, Ns)
 
 def get_in_frame(str, E, EF, name):
-	flag=0
+	flag=0 #uses a flag system where the final flg is the sum of all the possible flags that were triggered. 
+	#0/1 is start codon presense
+	#0/2 is stop codon presense
+	#0/4 is len is an even number of codons
+	#so a final sum of 0 is great - everything is in order.
+	#a final sum of 7 means every flag was triggered and this os a mess of a sequence - no start, no stop, not divisible by 3
+	
+	
+	#setting the flags:
 	if not str.startswith("ATG"):
 		flag=flag+1 
 	if not (str.endswith("TAA") or str.endswith("TAG") or str.endswith("TGA")):
@@ -63,6 +71,7 @@ def get_in_frame(str, E, EF, name):
 	if len(str) % 3 !=0:
 		flag=flag+4
 		
+		#testing the flag and getting in phase: 
 	if flag == 0 or flag == 1 or flag == 2 or flag == 6:
 		return(str,E,EF)
 	elif flag == 3  or flag == 7: #3 should not happen in transcriptomes that are pretty complete. 7 should really never happen at all in this data. 
@@ -71,7 +80,7 @@ def get_in_frame(str, E, EF, name):
 		else:
 			print("This sequence is really odd - no start or stop - what frame?? Calculate GC by hand! Flag is: ", flag, "\n>", name, "\n", str, sep="", file=sys.stderr)
 		E=E+1
-		return("",E,EF) #return nothing
+		return("",E,EF) #return nothing as the sequence was sent to the error file
 	elif flag == 4:
 		E=E+1
 		if Out2:
