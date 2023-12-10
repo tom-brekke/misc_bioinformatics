@@ -74,7 +74,7 @@ def calc_GC(str, Ns):
 		AT = str.count("A") + str.count("T")
 		N = len(str) - GC - AT
 		if N > 0:
-			if Ns==0:
+			if Ns==0: #Ns is the running count of sequences with N - but I only want to print this warning once, so keep the tally, but only do the print the first time. 
 				print("Warning: the input file has at least one sequence with non-ACGT characters. Percent GC is calculated based on the ATGC length only, ignoring other characters such as N and ambiguity codes.", file=sys.stderr)
 			#print(str, file=sys.stderr)
 			Ns=Ns+1
