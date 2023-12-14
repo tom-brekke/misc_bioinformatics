@@ -203,7 +203,7 @@ def check_assembly(str):
 	#4 start and stop, but they can't be in frame b/c length isn't a multiple of 3
 	#5 no start and not divisible by 3
 	#6 no stop and not divisible by 3
-	#7 no start, no stop, not divisible by 3 - this one is a mess. 
+	#7 no start, no stop, not divisible by 3 - this one is a mess: nothing to anchor anything with. 
 	if not str.startswith("ATG"):
 		flag = flag + 1 
 	if not (str.endswith("TAA") or str.endswith("TAG") or str.endswith("TGA")):
