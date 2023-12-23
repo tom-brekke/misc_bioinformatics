@@ -54,12 +54,12 @@ def makeBEDfile(record):
 	col3=len(record.seq)	#chromEnd - The ending position of the feature in the chromosome or scaffold. The chromEnd base is not included in the display of the feature. For example, the first 100 bases of a chromosome are defined as chromStart=0, chromEnd=100, and span the bases numbered 0-99.
 	print(col1, col2, col3, sep="	",  end="\n", file=BEDOUT)
 
-def makeGTFfile(record): # a pretty simple GTF file - only name, start, and stop really but in case of future improvements
+def makeGTFfile(record): # a pretty simple GTF file - only name, start, and stop. Added this code mainly as a placeholder in case of future improvements:
 	col1=record.id	#seqname
 	col2="."	#source: eg. Ensembl
 	col3="."	#feature: eg. Gene, Variation
 	col4="1"	#start position, first at 1 not 0
-	col5=len(record.seq)	#end position fist at 1 not 0
+	col5=len(record.seq)	#end position first at 1 not 0
 	col6="."	#score: floating point
 	col7="."	#strand: +,-
 	col8="."	#frame: 0,1,2
