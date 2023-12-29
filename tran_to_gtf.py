@@ -1,12 +1,15 @@
 #!/usr/bin/env python3	
 #created by TDB 1-27-2015
 #a script to make a gtf out of a transcriptome
+#needs the transciprtome and the name of the gtf to write at the command line
 
 import sys
 import re
 
 tran_file=sys.argv[1]
 gtf_file=sys.argv[2]
+
+
 
 tran=open(tran_file, "r")
 gtf=open(gtf_file, "w")
